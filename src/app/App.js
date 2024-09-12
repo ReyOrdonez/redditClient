@@ -23,9 +23,10 @@ function App() {
               Minimal
             </h1>
           </div>
+          <SearchBar/>
         </nav>
         <div className="posts">
-          <PostComponent />
+          <PostComponent key={"1"} propiedad="pito"/>
         </div>
         <div className="subReddits">
           <h2>subReddits</h2>

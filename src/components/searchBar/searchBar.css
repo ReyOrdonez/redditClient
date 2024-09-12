@@ -1,0 +1,17 @@
+.divBar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.searchBar {
+    all: unset;
+    width: 35rem;
+    height: 2.5rem;
+    background-color: rgb(233, 233, 233);
+    border-radius: 1rem;
+    padding: 0 1.5rem;
+    font-family: nunito;
+    margin: 0 1rem;
+}
