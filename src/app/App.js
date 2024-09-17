@@ -6,7 +6,7 @@ import PostComponent from "../components/postComponent/postComponent";
 
 //RESOURCES
 import "./App.css";
-import AlienBlue from "../reditLogo.png";
+import AlienBlue from "../resources/reditLogo.png";
 
 function App() {
   return (
@@ -23,10 +23,10 @@ function App() {
               Minimal
             </h1>
           </div>
-          <SearchBar/>
+          <SearchBar />
         </nav>
         <div className="posts">
-          <PostComponent key={"1"} propiedad="pito"/>
+          <PostComponent key={"1"} propiedad="pito" />
         </div>
         <div className="subReddits">
           <h2>subReddits</h2>

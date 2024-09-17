@@ -4,8 +4,10 @@ import React from "react";
 import "./postComponent.css";
 
 //RESOURCES
-import watchLogo from "../../time.png";
-import shareLogo from "../../share.png";
+import watchLogo from "../../resources/time.png";
+import shareLogo from "../../resources/share.png";
+import likeIcon from "../../resources/like.png";
+import commentsIcon from "../../resources/comment.png";
 
 const PostComponent = () => {
   return (
@@ -34,10 +36,18 @@ const PostComponent = () => {
       </div>
       <div className="options">
         <div className="likes">
-          <button className="like-button"></button>
+          <button className="reaction-button">
+            <img src={likeIcon} />
+          </button>
           <p className="likes-number">1.5k</p>
-          <button className="dislike-button"></button>
+          <button className="reaction-button">
+            <img src={likeIcon} />
+          </button>
         </div>
+        <button className="comments-button">
+          <img src={commentsIcon} />
+          <p className="likes-number">5.3k</p>
+        </button>
         <button className="share-button">
           <img className="share-logo" src={shareLogo} />
           <p className="share-text">Compartir</p>
