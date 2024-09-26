@@ -1,14 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const searchData = createAsyncThunk("search/searchTerm", async (term) => {
-  try {
-    const url = `https://www.reddit.com/search.json?q=${term}`;
-    const response = await fetch(url);
-    const json = await response.json();
-  } catch (err) {
-    console.log(err);
+export const searchData = createAsyncThunk(
+  "search/searchTerm",
+  async (term) => {
+    const query = term.split(" ").join("%20");
+    try {
+      const url = `https://www.reddit.com/search.json?q=${query}`;
+      console.log(url);
+      const response = await fetch(url);
+      const json = await response.json();
+      return json;
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+);
 
 const initialState = {
   results: [],
@@ -23,13 +29,24 @@ const searchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(searchData.pending, (state) => {
       state.loading = true;
-      console.log("pendiente");
     });
     builder.addCase(searchData.fulfilled, (state, action) => {
-      console.log("hecho!!");
+      state.loading = false;
+      console.log(action.payload);
+      action.payload.data.children.map((post) => {
+        state.results.push({
+          title: post.data.title,
+          text: post.data.selftext,
+          author: post.data.author,
+          numComments: post.data.num_comments,
+          score: post.data.score,
+          image: post.data.thumbnail !== "self" ? post.data.thumbnail : false,
+        });
+        return "";
+      });
     });
     builder.addCase(searchData.rejected, (state) => {
-      console.log("falló :C");
+      state.error = "Error al hacer la solicitud al servidor";
     });
   },
 });
