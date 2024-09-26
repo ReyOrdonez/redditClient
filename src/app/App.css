@@ -1,0 +1,47 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 3.75rem;
+  column-gap: 9.375rem;
+}
+nav {
+  display: flex;
+  align-items: center;
+  background-color: rgb(251, 251, 251);
+  box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
+  grid-column: 1/-1;
+  padding: 0.5rem;
+}
+.posts {
+  min-height: 500px;
+  margin-left: 6.25rem;
+  border-radius: 5px;
+}
+.subReddits {
+  background-color: rgb(251, 251, 251);
+  margin-right: 6.25rem;
+  border-radius: 5px;
+  box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
+}
+.title {
+  margin-left: 20px;
+}
+.logo {
+  width: 3.125rem;
+  height: 3.125rem;
+  margin: 0px 0.93rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: quicksand;
+}
+p {
+  font-family: nunito;
+}
+label {
+  color: rgb(0, 138, 218);
+}
