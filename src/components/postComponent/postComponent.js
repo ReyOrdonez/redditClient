@@ -9,7 +9,7 @@ import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
 import commentsIcon from "../../resources/comment.png";
 
-const PostComponent = () => {
+const PostComponent = ({postInfo}) => {
   return (
     <div className="post">
       <div
@@ -20,33 +20,25 @@ const PostComponent = () => {
         }}
       >
         <div>
-          <h2 className="post-title">Trapitos invaden el desierto de Sonora</h2>
-          <p className="user-name">@elMasturbaBurros</p>
+          <h2 className="post-title">{postInfo.title}</h2>
+          <p className="user-name">@{postInfo.author}</p>
         </div>
-        <p className="time">
-          <img src={watchLogo} className="watch-logo" />
-          Hace 4 horas
-        </p>
       </div>
       <div className="image-container">
-        <img
-          className="post-image"
-          src="https://pbs.twimg.com/media/ETgg_UvX0AEimWQ.jpg"
-        />
+        {
+          postInfo.image && <img src={postInfo.image} className="post-image"/>
+        }
       </div>
       <div className="options">
         <div className="likes">
-          <button className="reaction-button">
-            <img src={likeIcon} />
-          </button>
-          <p className="likes-number">1.5k</p>
-          <button className="reaction-button">
-            <img src={likeIcon} />
-          </button>
+          {
+            postInfo.score
+          }
         </div>
         <button className="comments-button">
-          <img src={commentsIcon} />
-          <p className="likes-number">5.3k</p>
+          {
+            postInfo.numComments
+          }
         </button>
         <button className="share-button">
           <img className="share-logo" src={shareLogo} />

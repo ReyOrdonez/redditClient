@@ -1,11 +1,11 @@
 import React from "react";
 import "./searchBar.css";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { searchData } from "../../features/searchSlice";
 import iconSearch from "../../resources/iconSearch.png";
 
-const SearchBar = () => {
+const SearchBar = ({setResults}) => {
   const [term, setTerm] = useState("");
 
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   return (
     <div className="divBar">
-      <form onSubmit={handleSubmit} termino={term}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           className="searchBar"
