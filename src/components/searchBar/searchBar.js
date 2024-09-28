@@ -17,7 +17,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="divBar">
+    <div className="form-container">
       <form onSubmit={handleSubmit} termino={term}>
         <input
           type="text"
@@ -25,8 +25,8 @@ const SearchBar = () => {
           onChange={(e) => setTerm(e.target.value)}
           value={term}
         ></input>
+        <img style={{ height: "20px", margin: "0px 5px" }} src={iconSearch} />
       </form>
-      <img style={{ height: "1.5rem" }} src={iconSearch} />
     </div>
   );
 };
