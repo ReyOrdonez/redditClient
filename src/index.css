@@ -5,3 +5,11 @@ html {
   margin: 0px;
   padding: 0px;
 }
+
+/*---------MEDIA QUERIS--------*/
+@media (max-width: 915px) {
+  body,
+  html {
+    font-size: 12px;
+  }
+}

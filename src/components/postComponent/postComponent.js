@@ -4,12 +4,11 @@ import React from "react";
 import "./postComponent.css";
 
 //RESOURCES
-import watchLogo from "../../resources/time.png";
 import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
 import commentsIcon from "../../resources/comment.png";
 
-const PostComponent = ({postInfo}) => {
+const PostComponent = ({ postInfo }) => {
   return (
     <div className="post">
       <div
@@ -25,24 +24,37 @@ const PostComponent = ({postInfo}) => {
         </div>
       </div>
       <div className="image-container">
-        {
-          postInfo.image && <img src={postInfo.image} className="post-image"/>
-        }
+        <img
+          className="post-image"
+          src="https://pbs.twimg.com/media/ETgg_UvX0AEimWQ.jpg"
+          alt="postImage"
+        />
       </div>
       <div className="options">
-        <div className="likes">
-          {
-            postInfo.score
-          }
+        <div className="reactions-container">
+          <button className="user-button reaction">
+            <img
+              className="button-icon reaction"
+              src={likeIcon}
+              alt="buttonIcon"
+            />
+          </button>
+          <p className="button-text reactions-number">{postInfo.score}</p>
+          <button className="user-button reaction">
+            <img
+              className="button-icon reaction"
+              src={likeIcon}
+              alt="buttonIcon"
+            />
+          </button>
         </div>
-        <button className="comments-button">
-          {
-            postInfo.numComments
-          }
+        <button className="user-button">
+          <img className="button-icon" src={commentsIcon} alt="buttonIcon" />
+          <p className="button-text">{postInfo.commentsNumber}</p>
         </button>
-        <button className="share-button">
-          <img className="share-logo" src={shareLogo} />
-          <p className="share-text">Compartir</p>
+        <button className="user-button">
+          <img className="button-icon" src={shareLogo} alt="buttonIcon" />
+          <p className="button-text">Compartir</p>
         </button>
       </div>
     </div>
