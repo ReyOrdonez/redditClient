@@ -35,7 +35,7 @@
   align-items: center;
   margin-top: 1rem;
 }
-.share-button {
+.user-button {
   all: unset;
   background-color: rgb(191, 223, 243);
   border-radius: 16px;
@@ -43,44 +43,56 @@
   align-items: center;
   margin: 0px 30px;
 }
-.share-text {
+.button-text {
   font-size: 0.9rem;
   font-family: quicksand;
   font-weight: 500;
   margin: 5px 15px 5px 3px;
 }
-.share-logo {
+.button-icon {
   max-height: 1.25rem;
   margin-left: 0.9375rem;
 }
-.likes {
-  all: unset;
-  background-color: rgb(191, 223, 243);
-  border-radius: 16px;
+.reactions-container {
   display: flex;
-  align-items: end;
-  padding: 1px 10px;
+  align-items: center;
 }
-.likes-number {
-  margin: 5px 0px 1px 0px;
-  font-size: 0.9rem;
+.user-button.reaction {
+  margin: 0px;
 }
-.reaction-button {
-  all: unset;
-  margin: 0px 3px;
+.button-icon.reaction {
+  margin: 5px 15px;
 }
-.reaction-button img {
-  height: 20px;
+.button-text.reactions-number {
+  margin: 0px 7px;
 }
-.comments-button {
-  all: unset;
-  background-color: rgb(191, 223, 243);
-  border-radius: 16px;
-  display: flex;
-  align-items: end;
-  margin: 0px 30px;
-  padding: 2px 15px;
-}
-.comments-button img {
-  height: 25px;
+
+/*--------MEDIA QUERIS--------*/
+@media (max-width: 915px) {
+  .image-container {
+    margin: 0px auto;
+    max-width: 90%;
+  }
+  .post-title {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+  .button-icon {
+    max-height: 2rem;
+  }
+  .button-text {
+    font-size: 1.2rem;
+  }
+  .button-icon.reaction {
+    margin: 1px 8px;
+  }
+  .user-button {
+    margin: 0px;
+  }
+  .options {
+    justify-content: space-around;
+  }
+  .button-text.reactions-number {
+    margin: 0px 2px;
+  }
 }

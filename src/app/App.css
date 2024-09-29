@@ -68,15 +68,16 @@ label {
     display: none;
   }
   .posts {
-    margin-top: 300px;
+    margin: 80px 7px 0px;
+    max-width: 100%;
   }
   .menu-icon {
-    max-height: 30px;
+    max-height: 23px;
     margin: 0px 10px;
   }
   .navBar-mobile h1 {
     color: rgb(0, 138, 218);
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
   .reddit-logo-mobile {
     max-height: 40px;

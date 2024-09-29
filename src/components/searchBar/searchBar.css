@@ -10,11 +10,12 @@ form {
   all: unset;
   width: 100%;
   height: 2rem;
+  padding: 0px 5px;
   background-color: rgb(233, 233, 233);
   border-radius: 10px;
   font-family: nunito;
 }
-/*---------MEDIA QUERIS------------*/
+/*-----------MEDIA QUERIS------------*/
 @media (max-width: 915px) {
   .searchBar {
     height: auto;

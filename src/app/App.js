@@ -38,7 +38,9 @@ function App() {
             className="reddit-logo-mobile"
           />
         </nav>
-        <div className="posts"></div>
+        <div className="posts">
+          <PostComponent />
+        </div>
         <div className="subReddits">
           <h2>subReddits</h2>
         </div>
