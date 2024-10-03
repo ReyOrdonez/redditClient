@@ -32,6 +32,7 @@ const searchSlice = createSlice({
     });
     builder.addCase(searchData.fulfilled, (state, action) => {
       state.loading = false;
+      state.results = [];
       console.log(action.payload);
       action.payload.data.children.map((post) => {
         state.results.push({

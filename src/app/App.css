@@ -59,8 +59,9 @@ label {
   .navBar-mobile {
     display: flex;
     position: fixed;
-    align-items: center;
     width: 100%;
+    align-items: center;
+    justify-content: space-between;
     background-color: rgb(251, 251, 251);
     box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
   }
@@ -81,6 +82,6 @@ label {
   }
   .reddit-logo-mobile {
     max-height: 40px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
 }

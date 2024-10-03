@@ -6,16 +6,6 @@
   color: rgb(127, 127, 127);
   margin-top: 5px;
 }
-.time {
-  color: rgb(127, 127, 127);
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-}
-.watch-logo {
-  max-height: 1rem;
-  margin-right: 0.3125rem;
-}
 .post-image {
   object-fit: contain;
   width: 100%;
@@ -53,18 +43,29 @@
   max-height: 1.25rem;
   margin-left: 0.9375rem;
 }
+.button-icon.reaction {
+  margin: 0px;
+}
 .reactions-container {
   display: flex;
   align-items: center;
+  margin-right: 10px;
 }
-.user-button.reaction {
-  margin: 0px;
+.reaction-button {
+  all: unset;
 }
-.button-icon.reaction {
-  margin: 5px 15px;
+.line {
+  margin: 20px 0px 60px;
+  background-color: rgb(176, 176, 176);
+  min-height: 1px;
 }
-.button-text.reactions-number {
-  margin: 0px 7px;
+.reactions-number {
+  margin: 0px 8px;
+}
+.comment-button {
+  all: unset;
+  display: flex;
+  align-items: center;
 }
 
 /*--------MEDIA QUERIS--------*/

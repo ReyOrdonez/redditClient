@@ -13,8 +13,6 @@ import "./App.css";
 import AlienBlue from "../resources/reditLogo.png";
 import menuIcon from "../resources/menu.png";
 
-import { useState } from "react";
-
 function App() {
   const results = useSelector(resultsSelector);
   return (

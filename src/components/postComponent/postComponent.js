@@ -12,6 +12,7 @@ const PostComponent = ({ postInfo }) => {
   return (
     <div className="post">
       <div
+        className="title"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -24,23 +25,23 @@ const PostComponent = ({ postInfo }) => {
         </div>
       </div>
       <div className="image-container">
-        <img
-          className="post-image"
-          src="https://pbs.twimg.com/media/ETgg_UvX0AEimWQ.jpg"
-          alt="postImage"
-        />
+        <img className="post-image" src={postInfo.image} alt="postImage" />
       </div>
       <div className="options">
         <div className="reactions-container">
-          <button className="user-button reaction">
+          <button className="reaction-button">
             <img
               className="button-icon reaction"
               src={likeIcon}
               alt="buttonIcon"
             />
           </button>
-          <p className="button-text reactions-number">{postInfo.score}</p>
-          <button className="user-button reaction">
+          <p className="button-text reactions-number">
+            {postInfo.score > 999
+              ? (postInfo.score / 1000).toFixed(1) + "k"
+              : postInfo.score}
+          </p>
+          <button className="reaction-button">
             <img
               className="button-icon reaction"
               src={likeIcon}
@@ -48,15 +49,21 @@ const PostComponent = ({ postInfo }) => {
             />
           </button>
         </div>
-        <button className="user-button">
-          <img className="button-icon" src={commentsIcon} alt="buttonIcon" />
-          <p className="button-text">{postInfo.commentsNumber}</p>
+        <button className="comment-button">
+          <img
+            className="button-icon comments"
+            src={commentsIcon}
+            alt="buttonIcon"
+          />
+          <p className="button-text">{postInfo.numComments}</p>
         </button>
         <button className="user-button">
           <img className="button-icon" src={shareLogo} alt="buttonIcon" />
           <p className="button-text">Compartir</p>
         </button>
       </div>
+      <section className="comments-section"></section>
+      <div className="line"></div>
     </div>
   );
 };
