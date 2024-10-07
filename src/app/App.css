@@ -4,13 +4,16 @@
   row-gap: 3.75rem;
   column-gap: 9.375rem;
 }
-nav {
+.navBar-pc {
   display: flex;
   align-items: center;
   background-color: rgb(251, 251, 251);
   box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
   grid-column: 1/-1;
   padding: 0.5rem;
+}
+.navBar-mobile {
+  display: none;
 }
 .posts {
   min-height: 500px;
@@ -44,4 +47,41 @@ p {
 }
 label {
   color: rgb(0, 138, 218);
+}
+
+/*---------MEDIA QUERIS---------*/
+
+@media (max-width: 915px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .navBar-mobile {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
+  }
+  .navBar-pc {
+    display: none;
+  }
+  .posts {
+    margin: 80px 7px 0px;
+    max-width: 100%;
+  }
+  .menu-icon {
+    max-height: 23px;
+    margin: 0px 10px;
+  }
+  .navBar-mobile h1 {
+    color: rgb(0, 138, 218);
+    font-size: 2rem;
+  }
+  .reddit-logo-mobile {
+    max-height: 40px;
+    margin-right: 10px;
+  }
 }
