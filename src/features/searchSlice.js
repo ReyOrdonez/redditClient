@@ -6,12 +6,11 @@ export const searchData = createAsyncThunk(
     const query = term.split(" ").join("%20");
     try {
       const url = `https://www.reddit.com/search.json?q=${query}`;
-      console.log(url);
       const response = await fetch(url);
       const json = await response.json();
       return json;
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 );
@@ -42,6 +41,9 @@ const searchSlice = createSlice({
           numComments: post.data.num_comments,
           score: post.data.score,
           image: post.data.thumbnail !== "self" ? post.data.thumbnail : false,
+          /*WE NEED THIS DATA IF WE WANNA REQUEST THE POST'S DATA (comments)*/
+          subReddit: post.data.subreddit,
+          postId: post.data.id,
         });
         return "";
       });

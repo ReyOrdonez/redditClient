@@ -5,13 +5,21 @@ import { useDispatch } from "react-redux";
 import { searchData } from "../../features/searchSlice";
 import iconSearch from "../../resources/iconSearch.png";
 
-const SearchBar = ({ setResults }) => {
+const SearchBar = () => {
   const [term, setTerm] = useState("");
 
   const dispatch = useDispatch();
 
+  const scrollTopFunction = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
+    scrollTopFunction();
     dispatch(searchData(term));
     setTerm("");
   }
