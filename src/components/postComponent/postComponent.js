@@ -8,7 +8,19 @@ import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
 import commentsIcon from "../../resources/comment.png";
 
+//THUNK
+import { loadComments } from "../../features/commentsSlice";
+
+//REDUX HOOKS
+import { useDispatch } from "react-redux";
+
 const PostComponent = ({ postInfo }) => {
+  const dispatch = useDispatch();
+
+  function handleOnClickRequestComments() {
+    dispatch(loadComments(postInfo.postId));
+  }
+
   return (
     <div className="post">
       <div
@@ -25,7 +37,11 @@ const PostComponent = ({ postInfo }) => {
         </div>
       </div>
       <div className="image-container">
-        <img className="post-image" src={postInfo.image} alt="postImage" />
+        {postInfo.image ? (
+          <img className="post-image" src={postInfo.image} alt="postImage" />
+        ) : (
+          false
+        )}
       </div>
       <div className="options">
         <div className="reactions-container">
@@ -49,7 +65,10 @@ const PostComponent = ({ postInfo }) => {
             />
           </button>
         </div>
-        <button className="comment-button">
+        <button
+          className="comment-button"
+          onClick={handleOnClickRequestComments}
+        >
           <img
             className="button-icon comments"
             src={commentsIcon}
