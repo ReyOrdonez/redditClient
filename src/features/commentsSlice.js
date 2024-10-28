@@ -5,8 +5,7 @@ export const loadComments = createAsyncThunk(
   "comments/loadComments",
   async (postId) => {
     try {
-      const url = `https://www.reddit.com/comments/${postId}/.json`;
-      console.log(url);
+      const url = `https://www.reddit.com/comments/${postId}/.json?limit=20`;
       const response = await fetch(url);
       const json = await response.json();
       return {
@@ -34,7 +33,6 @@ const commentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(loadComments.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.isLoading = false;
       state.comments.push({
         postId: action.payload.postId,
@@ -45,7 +43,6 @@ const commentsSlice = createSlice({
           }
         })
       });
-      console.log(state.comments);
     });
     builder.addCase(loadComments.rejected, (state) => {
       state.error = "Error al cargar los comentarios";
@@ -54,7 +51,10 @@ const commentsSlice = createSlice({
 });
 
 //SELECTOR
-export const selectComments = (state) => state.comments.comments;
+export const selectCommentsByPost = (state, postId) => {
+  const commentsData = state.comments.comments.filter(commentList => commentList.postId === postId);
+  return commentsData
+};
 
 //REDUCER
 export default commentsSlice.reducer;

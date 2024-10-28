@@ -3,6 +3,9 @@ import React from "react";
 //IMPORT CSS
 import "./postComponent.css";
 
+//COMPONENTS
+import CommentComponent from "../commentComponent/commentComponent";
+
 //RESOURCES
 import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
@@ -12,13 +15,18 @@ import commentsIcon from "../../resources/comment.png";
 import { loadComments } from "../../features/commentsSlice";
 
 //REDUX HOOKS
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+//SELECTORS
+import { selectCommentsByPost } from "../../features/commentsSlice";
 
 const PostComponent = ({ postInfo }) => {
   const dispatch = useDispatch();
+  const comments = useSelector(state => selectCommentsByPost(state, postInfo.postId))
 
   function handleOnClickRequestComments() {
     dispatch(loadComments(postInfo.postId));
+    console.log(comments);
   }
 
   return (
@@ -81,7 +89,11 @@ const PostComponent = ({ postInfo }) => {
           <p className="button-text">Compartir</p>
         </button>
       </div>
-      <section className="comments-section"></section>
+      <section className="comments-section">
+            {
+              comments.map(commentData => <CommentComponent userName={commentData.author} body={commentData.body}/>)
+            }
+      </section>
       <div className="line"></div>
     </div>
   );
