@@ -22,11 +22,17 @@ import { selectCommentsByPost } from "../../features/commentsSlice";
 
 const PostComponent = ({ postInfo }) => {
   const dispatch = useDispatch();
-  const comments = useSelector(state => selectCommentsByPost(state, postInfo.postId))
+  const commentsList = useSelector((state) =>
+    selectCommentsByPost(state, postInfo.postId)
+  );
+  if (commentsList[0]) {
+    console.log(commentsList[0].comments);
+  } else {
+    console.log("no se pudo");
+  }
 
   function handleOnClickRequestComments() {
     dispatch(loadComments(postInfo.postId));
-    console.log(comments);
   }
 
   return (
@@ -90,9 +96,14 @@ const PostComponent = ({ postInfo }) => {
         </button>
       </div>
       <section className="comments-section">
-            {
-              comments.map(commentData => <CommentComponent userName={commentData.author} body={commentData.body}/>)
-            }
+        {commentsList[0] &&
+          commentsList[0].comments.map((comment, key) => (
+            <CommentComponent
+              userName={comment.author}
+              body={comment.body}
+              key={key}
+            />
+          ))}
       </section>
       <div className="line"></div>
     </div>

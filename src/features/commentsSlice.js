@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadComments = createAsyncThunk(
@@ -10,8 +10,8 @@ export const loadComments = createAsyncThunk(
       const json = await response.json();
       return {
         postId: postId,
-        json: json
-      }
+        json: json,
+      };
     } catch (err) {
       return err;
     }
@@ -37,24 +37,26 @@ const commentsSlice = createSlice({
       state.comments.push({
         postId: action.payload.postId,
         comments: action.payload.json[1].data.children.map((comment) => {
-          return{
+          return {
             author: comment.data.author,
-            body: comment.data.body
-          }
-        })
+            body: comment.data.body,
+          };
+        }),
       });
     });
     builder.addCase(loadComments.rejected, (state) => {
-      state.error = "Error al cargar los comentarios";
+      state.error = loadComments.rejected;
     });
   },
 });
 
 //SELECTOR
-export const selectCommentsByPost = (state, postId) => {
-  const commentsData = state.comments.comments.filter(commentList => commentList.postId === postId);
-  return commentsData
-};
+export const selectAllComments = (state) => state.comments.comments;
+export const selectCommentsByPost = createSelector(
+  [selectAllComments, (state, postId) => postId],
+  (allComments, postId) =>
+    allComments.filter((commentList) => commentList.postId === postId)
+);
 
 //REDUCER
 export default commentsSlice.reducer;
