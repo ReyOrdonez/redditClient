@@ -44,8 +44,8 @@ function App() {
           />
         </nav>
         <div className="posts">
-          {results.map((post, number) => (
-            <PostComponent key={number} postInfo={post} />
+          {results.map((post, index) => (
+            <PostComponent key={index} postInfo={post} />
           ))}
         </div>
         <div className="subReddits">
