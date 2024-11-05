@@ -1,3 +1,6 @@
+.post {
+  margin-bottom: 45px;
+}
 .post-title {
   font-weight: 500;
   margin: 0px;
@@ -55,7 +58,7 @@
   all: unset;
 }
 .line {
-  margin: 20px 0px 60px;
+  margin: 20px 0px 20px;
   background-color: rgb(176, 176, 176);
   min-height: 1px;
 }

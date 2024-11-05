@@ -1,0 +1,11 @@
+.user-image {
+  max-height: 30px;
+  max-width: 30px;
+}
+.user-container {
+  display: flex;
+  align-items: center;
+}
+.user-name-comment {
+  margin: 0px 8px;
+}

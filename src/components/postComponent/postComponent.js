@@ -11,11 +11,17 @@ import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
 import commentsIcon from "../../resources/comment.png";
 
-import { useState } from "react";
+//HOOKS
+import { useState, useEffect } from "react";
 
 const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
   const [error, setError] = useState();
+
+  useEffect(() => {
+    //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
+    setComments([]);
+  }, [postInfo]);
 
   const fetchComments = async () => {
     const url = `https://www.reddit.com/comments/${postInfo.postId}/.json?limit=20`;
@@ -29,12 +35,14 @@ const PostComponent = ({ postInfo }) => {
     json.forEach((data) => {
       const commentsByType = data.data.children;
       commentsByType.forEach((comment) => {
-        if (comment.kind !== "more") {
+        if (comment.kind !== "more" && comment.data.body) {
           comments.push(comment.data);
+          console.log(comment);
         }
       });
     });
     setComments(comments);
+    console.log(error);
   };
 
   return (
@@ -93,7 +101,6 @@ const PostComponent = ({ postInfo }) => {
         </button>
       </div>
       <section className="comments-section">
-        {error && <p>{error}</p>}
         {comments?.map((comment, key) => (
           <CommentComponent
             userName={comment.author}
