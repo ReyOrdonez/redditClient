@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
   const [error, setError] = useState();
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
@@ -24,6 +25,11 @@ const PostComponent = ({ postInfo }) => {
   }, [postInfo]);
 
   const fetchComments = async () => {
+    if (comments.length) {
+      setVisible(!visible);
+      console.log(visible);
+      return;
+    }
     const url = `https://www.reddit.com/comments/${postInfo.postId}/.json?limit=20`;
     const response = await fetch(url);
     if (!response.ok) {
@@ -31,18 +37,16 @@ const PostComponent = ({ postInfo }) => {
       return;
     }
     const json = await response.json();
-    const comments = [];
+    const commentsArray = [];
     json.forEach((data) => {
       const commentsByType = data.data.children;
       commentsByType.forEach((comment) => {
         if (comment.kind !== "more" && comment.data.body) {
-          comments.push(comment.data);
-          console.log(comment);
+          commentsArray.push(comment.data);
         }
       });
     });
-    setComments(comments);
-    console.log(error);
+    setComments(commentsArray);
   };
 
   return (
@@ -106,6 +110,7 @@ const PostComponent = ({ postInfo }) => {
             userName={comment.author}
             body={comment.body}
             key={key}
+            visible={visible}
           />
         ))}
       </section>

@@ -3,9 +3,9 @@ import "./commentComponent.css";
 
 import alienBlue from "../../resources/reditLogo.png";
 
-const CommentComponent = ({ userName, body }) => {
+const CommentComponent = ({ userName, body, visible }) => {
   return (
-    <div className="comment-component">
+    <div className={visible ? "display-block" : "display-none"}>
       <div className="line"></div>
       <div className="user-container">
         <img src={alienBlue} className="user-image" alt="userImage" />
