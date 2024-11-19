@@ -2,13 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const searchData = createAsyncThunk(
   "search/searchTerm",
-  async (term) => {
-    const query = term.split(" ").join("%20");
+  async (search) => {
     try {
-      const url = `https://www.reddit.com/search.json?q=${query}`;
-      const response = await fetch(url);
-      const json = await response.json();
-      return json;
+      if (search.type === "search") {
+        const query = search.term.split(" ").join("%20");
+        const url = `https://www.reddit.com/search.json?q=${query}`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json;
+      } else if (search.type === "subReddit") {
+        const subReddit = search.term.split("r/").join("");
+        const url = `https://www.reddit.com/r/${subReddit}.json`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json;
+      }
     } catch (err) {
       return err;
     }

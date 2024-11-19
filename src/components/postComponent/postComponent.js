@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
   const [error, setError] = useState();
+  console.log(error);
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
@@ -37,12 +38,10 @@ const PostComponent = ({ postInfo }) => {
       commentsByType.forEach((comment) => {
         if (comment.kind !== "more" && comment.data.body) {
           comments.push(comment.data);
-          console.log(comment);
         }
       });
     });
     setComments(comments);
-    console.log(error);
   };
 
   return (

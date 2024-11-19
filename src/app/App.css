@@ -3,6 +3,7 @@
   grid-template-columns: 2fr 1fr;
   row-gap: 3.75rem;
   column-gap: 9.375rem;
+  align-items: start;
 }
 .navBar-pc {
   display: flex;
@@ -17,7 +18,7 @@
 }
 .posts {
   min-height: 500px;
-  margin-left: 6.25rem;
+  margin-left: 75px;
   border-radius: 5px;
 }
 .subReddits {
@@ -25,6 +26,7 @@
   margin-right: 6.25rem;
   border-radius: 5px;
   box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
+  height: auto;
 }
 .title {
   margin-left: 20px;
