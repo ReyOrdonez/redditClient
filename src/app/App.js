@@ -3,6 +3,7 @@ import React from "react";
 //COMPONENTS
 import SearchBar from "../components/searchBar/searchBar";
 import PostComponent from "../components/postComponent/postComponent";
+import { SubRedditComponent } from "../components/subRedditComponent/subRedditComponent";
 
 //SELECTORS
 import { resultsSelector } from "../features/searchSlice";
@@ -13,8 +14,29 @@ import "./App.css";
 import AlienBlue from "../resources/reditLogo.png";
 import menuIcon from "../resources/menu.png";
 
+//HOOKS
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+//THUNK
+import { searchData } from "../features/searchSlice";
+
 function App() {
   const results = useSelector(resultsSelector);
+  const [subReddits, setSubReddits] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async function fetchSubReddits() {
+      const request = await fetch(
+        "https://www.reddit.com/subreddits/popular.json?limit=12"
+      );
+      const json = await request.json();
+      setSubReddits(json.data.children);
+      dispatch(searchData({ term: "r/Home/", type: "subReddit" }));
+    })();
+  }, [dispatch]);
+
   return (
     <div className="App">
       <div className="grid-container">
@@ -49,7 +71,11 @@ function App() {
           ))}
         </div>
         <div className="subReddits">
-          <h2>subReddits</h2>
+          {subReddits.map((subReddit, key) => {
+            return (
+              <SubRedditComponent subRedditData={subReddit.data} key={key} />
+            );
+          })}
         </div>
       </div>
     </div>

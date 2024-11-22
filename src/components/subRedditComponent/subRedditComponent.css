@@ -1,0 +1,11 @@
+.subReddit-title {
+  font-weight: 500;
+}
+.subReddit-button {
+  width: 100%;
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+.subReddit-button:hover {
+  background-color: rgb(178, 178, 178);
+}

@@ -20,7 +20,7 @@ const SearchBar = () => {
   function handleSubmit(e) {
     e.preventDefault();
     scrollTopFunction();
-    dispatch(searchData(term));
+    dispatch(searchData({ term: term, type: "search" }));
     setTerm("");
   }
 
@@ -33,7 +33,11 @@ const SearchBar = () => {
           onChange={(e) => setTerm(e.target.value)}
           value={term}
         ></input>
-        <img style={{ height: "20px", margin: "0px 5px" }} src={iconSearch} alt="searchIcon"/>
+        <img
+          style={{ height: "20px", margin: "0px 5px" }}
+          src={iconSearch}
+          alt="searchIcon"
+        />
       </form>
     </div>
   );

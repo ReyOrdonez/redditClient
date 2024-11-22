@@ -18,6 +18,7 @@ const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
   const [error, setError] = useState();
   const [visible, setVisible] = useState(true);
+  console.log(error);
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
