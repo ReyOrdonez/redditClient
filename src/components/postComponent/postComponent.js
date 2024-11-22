@@ -31,7 +31,6 @@ const PostComponent = ({ postInfo }) => {
     const url = `https://www.reddit.com/comments/${postInfo.postId}/.json?limit=20`;
     const response = await fetch(url);
     if (!response.ok) {
-      setError(response.status);
       return;
     }
     const json = await response.json();
