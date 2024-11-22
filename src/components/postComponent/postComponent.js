@@ -16,9 +16,7 @@ import { useState, useEffect } from "react";
 
 const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
-  const [error, setError] = useState();
   const [visible, setVisible] = useState(true);
-  console.log(error);
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
@@ -28,7 +26,6 @@ const PostComponent = ({ postInfo }) => {
   const fetchComments = async () => {
     if (comments.length) {
       setVisible(!visible);
-      console.log(visible);
       return;
     }
     const url = `https://www.reddit.com/comments/${postInfo.postId}/.json?limit=20`;
