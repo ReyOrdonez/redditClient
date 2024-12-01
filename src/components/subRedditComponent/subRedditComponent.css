@@ -5,6 +5,7 @@
   width: 100%;
   border: none;
   background-color: rgb(255, 255, 255);
+  border-radius: 10px;
 }
 .subReddit-button:hover {
   background-color: rgb(178, 178, 178);

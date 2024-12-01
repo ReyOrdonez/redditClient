@@ -23,7 +23,6 @@
 }
 .subReddits {
   background-color: rgb(251, 251, 251);
-  margin-right: 6.25rem;
   border-radius: 5px;
   box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12);
   height: auto;
@@ -49,6 +48,16 @@ p {
 }
 label {
   color: rgb(0, 138, 218);
+}
+#subReddits-section {
+  text-align: center;
+  margin-right: 75px;
+}
+#subReddits-title {
+  margin-top: 0px;
+  color: rgb(1, 151, 238);
+  font-size: 23px;
+  font-weight: 600;
 }
 
 /*---------MEDIA QUERIS---------*/

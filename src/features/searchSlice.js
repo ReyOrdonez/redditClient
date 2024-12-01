@@ -4,19 +4,17 @@ export const searchData = createAsyncThunk(
   "search/searchTerm",
   async (search) => {
     try {
+      let url;
       if (search.type === "search") {
         const query = search.term.split(" ").join("%20");
-        const url = `https://www.reddit.com/search.json?q=${query}`;
-        const response = await fetch(url);
-        const json = await response.json();
-        return json;
+        url = `https://www.reddit.com/search.json?q=${query}`;
       } else if (search.type === "subReddit") {
         const subReddit = search.term.split("r/").join("");
-        const url = `https://www.reddit.com/r/${subReddit}.json`;
-        const response = await fetch(url);
-        const json = await response.json();
-        return json;
+        url = `https://www.reddit.com/r/${subReddit}.json`;
       }
+      const response = await fetch(url);
+      const json = await response.json();
+      return json;
     } catch (err) {
       return err;
     }
@@ -39,8 +37,9 @@ const searchSlice = createSlice({
     });
     builder.addCase(searchData.fulfilled, (state, action) => {
       state.loading = false;
+      console.log("ya no estoy cargando");
       state.results = [];
-      action.payload.data.children.map((post) => {
+      action.payload.data.children.forEach((post) => {
         state.results.push({
           title: post.data.title,
           text: post.data.selftext,
@@ -52,7 +51,6 @@ const searchSlice = createSlice({
           subReddit: post.data.subreddit,
           postId: post.data.id,
         });
-        return "";
       });
     });
     builder.addCase(searchData.rejected, (state) => {

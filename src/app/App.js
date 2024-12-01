@@ -70,13 +70,16 @@ function App() {
             <PostComponent key={index} postInfo={post} />
           ))}
         </div>
-        <div className="subReddits">
-          {subReddits.map((subReddit, key) => {
-            return (
-              <SubRedditComponent subRedditData={subReddit.data} key={key} />
-            );
-          })}
-        </div>
+        <section id="subReddits-section">
+          <p id="subReddits-title">subreddits</p>
+          <div className="subReddits">
+            {subReddits.map((subReddit, key) => {
+              return (
+                <SubRedditComponent subRedditData={subReddit.data} key={key} />
+              );
+            })}
+          </div>
+        </section>
       </div>
     </div>
   );

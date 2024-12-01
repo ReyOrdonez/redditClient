@@ -7,7 +7,6 @@ import "./postComponent.css";
 import CommentComponent from "../commentComponent/commentComponent";
 
 //RESOURCES
-import shareLogo from "../../resources/share.png";
 import likeIcon from "../../resources/like.png";
 import commentsIcon from "../../resources/comment.png";
 
@@ -17,6 +16,7 @@ import { useState, useEffect } from "react";
 const PostComponent = ({ postInfo }) => {
   const [comments, setComments] = useState();
   const [visible, setVisible] = useState(true);
+  console.log("fui renderizado uwu");
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
@@ -95,10 +95,6 @@ const PostComponent = ({ postInfo }) => {
             alt="buttonIcon"
           />
           <p className="button-text">{postInfo.numComments}</p>
-        </button>
-        <button className="user-button">
-          <img className="button-icon" src={shareLogo} alt="buttonIcon" />
-          <p className="button-text">Compartir</p>
         </button>
       </div>
       <section className="comments-section">
