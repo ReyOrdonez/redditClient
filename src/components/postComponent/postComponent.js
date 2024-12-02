@@ -46,7 +46,7 @@ const PostComponent = ({ postInfo, loading }) => {
   };
 
   return (
-    <div className={loading ? "display-none" : "post"}>
+    <div className={loading ? "display-none post" : "post"}>
       <div
         className="title"
         style={{

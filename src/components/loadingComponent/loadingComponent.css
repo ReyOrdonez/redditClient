@@ -1,5 +1,6 @@
 .skeleton {
   margin-bottom: 45px;
+  z-index: -1;
 }
 .skeleton-color {
   background-color: rgb(161, 161, 161);

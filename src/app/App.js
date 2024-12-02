@@ -69,7 +69,7 @@ function App() {
           {loading &&
             Array(5)
               .fill(0)
-              .map((_, index) => <LoadingComponent index={index} />)}
+              .map((_, index) => <LoadingComponent key={index} />)}
           {results.map((post, index) => (
             <PostComponent key={index} postInfo={post} loading={loading} />
           ))}
