@@ -1,0 +1,42 @@
+.skeleton {
+  margin-bottom: 45px;
+}
+.skeleton-color {
+  background-color: rgb(161, 161, 161);
+  animation: 1s blink infinite ease-in-out;
+}
+.skeleton-title {
+  min-height: 20px;
+  margin-left: 20px;
+  width: 50%;
+  border-radius: 3px;
+}
+.skeleton-user {
+  min-height: 15px;
+  width: 40%;
+  margin: 15px 20px;
+  border-radius: 3px;
+}
+.skeleton-image {
+  height: 500px;
+  margin: 0px 50px;
+  border-radius: 7px;
+}
+.skeleton-options {
+  min-height: 20px;
+  margin: 10px 30px;
+  width: 20%;
+  border-radius: 3px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

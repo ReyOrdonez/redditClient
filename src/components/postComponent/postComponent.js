@@ -13,10 +13,9 @@ import commentsIcon from "../../resources/comment.png";
 //HOOKS
 import { useState, useEffect } from "react";
 
-const PostComponent = ({ postInfo }) => {
+const PostComponent = ({ postInfo, loading }) => {
   const [comments, setComments] = useState();
   const [visible, setVisible] = useState(true);
-  console.log("fui renderizado uwu");
 
   useEffect(() => {
     //CLEAN UP OUR COMMENTS LIST BEFORE RENDERING NEW POSTS
@@ -47,7 +46,7 @@ const PostComponent = ({ postInfo }) => {
   };
 
   return (
-    <div className="post">
+    <div className={loading ? "display-none" : "post"}>
       <div
         className="title"
         style={{

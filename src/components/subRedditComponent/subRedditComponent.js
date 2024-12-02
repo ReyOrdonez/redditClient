@@ -3,7 +3,7 @@ import "./subRedditComponent.css";
 import { useDispatch } from "react-redux";
 import { searchData } from "../../features/searchSlice";
 
-export const SubRedditComponent = ({ subRedditData }) => {
+const SubRedditComponent = ({ subRedditData }) => {
   const dispatch = useDispatch();
   function handleOnClick() {
     dispatch(searchData({ term: subRedditData.url, type: "subReddit" }));
@@ -17,3 +17,5 @@ export const SubRedditComponent = ({ subRedditData }) => {
     </div>
   );
 };
+
+export default SubRedditComponent;

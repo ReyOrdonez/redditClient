@@ -3,10 +3,12 @@ import React from "react";
 //COMPONENTS
 import SearchBar from "../components/searchBar/searchBar";
 import PostComponent from "../components/postComponent/postComponent";
-import { SubRedditComponent } from "../components/subRedditComponent/subRedditComponent";
+import SubRedditComponent from "../components/subRedditComponent/subRedditComponent";
+import LoadingComponent from "../components/loadingComponent/loadingComponent";
 
 //SELECTORS
 import { resultsSelector } from "../features/searchSlice";
+import { loadingSelector } from "../features/searchSlice";
 import { useSelector } from "react-redux";
 
 //RESOURCES
@@ -23,6 +25,7 @@ import { searchData } from "../features/searchSlice";
 
 function App() {
   const results = useSelector(resultsSelector);
+  const loading = useSelector(loadingSelector);
   const [subReddits, setSubReddits] = useState([]);
   const dispatch = useDispatch();
 
@@ -41,10 +44,7 @@ function App() {
     <div className="App">
       <div className="grid-container">
         <nav className="navBar-pc">
-          <div
-            className="title"
-            style={{ display: "flex", alignItems: "center" }}
-          >
+          <div className="title">
             <img src={AlienBlue} alt="reddit-logo" className="logo" />
             <h1>
               <label>Reddit</label>
@@ -66,8 +66,12 @@ function App() {
           />
         </nav>
         <div className="posts">
+          {loading &&
+            Array(5)
+              .fill(0)
+              .map((_, index) => <LoadingComponent index={index} />)}
           {results.map((post, index) => (
-            <PostComponent key={index} postInfo={post} />
+            <PostComponent key={index} postInfo={post} loading={loading} />
           ))}
         </div>
         <section id="subReddits-section">

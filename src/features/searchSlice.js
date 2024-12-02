@@ -61,6 +61,7 @@ const searchSlice = createSlice({
 
 //selectors
 export const resultsSelector = (state) => state.search.results;
+export const loadingSelector = (state) => state.search.loading;
 //reducer
 export default searchSlice.reducer;
 //actions

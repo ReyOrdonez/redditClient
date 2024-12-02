@@ -16,11 +16,11 @@
 }
 .image-container {
   background-color: rgb(181, 181, 181);
-  height: 31.25rem;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0px 3.125rem;
+  margin: 0px 50px;
   border-radius: 7px;
 }
 .options {
@@ -69,6 +69,9 @@
   all: unset;
   display: flex;
   align-items: center;
+}
+.display-none {
+  display: none;
 }
 
 /*--------MEDIA QUERIS--------*/

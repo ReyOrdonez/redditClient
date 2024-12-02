@@ -29,6 +29,8 @@
 }
 .title {
   margin-left: 20px;
+  display: flex;
+  align-items: center;
 }
 .logo {
   width: 3.125rem;
