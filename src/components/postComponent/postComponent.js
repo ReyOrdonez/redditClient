@@ -60,11 +60,12 @@ const PostComponent = ({ postInfo, loading }) => {
           <p className="user-name">@{postInfo.author}</p>
         </div>
       </div>
-      <div className="image-container">
-        {postInfo.image && (
+      <p className="post-text">{postInfo.text}</p>
+      {postInfo.image && (
+        <div className="image-container">
           <img className="post-image" src={postInfo.image} alt="postImage" />
-        )}
-      </div>
+        </div>
+      )}
       <div className="options">
         <div className="reactions-container">
           <button className="reaction-button">

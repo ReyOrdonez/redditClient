@@ -46,7 +46,11 @@ const searchSlice = createSlice({
           author: post.data.author,
           numComments: post.data.num_comments,
           score: post.data.score,
-          image: post.data.thumbnail !== "self" ? post.data.thumbnail : false,
+          image:
+            post.data.preview?.images[0]?.source?.url?.replace(/&amp;/g, "&") ||
+            (post.data.thumbnail?.startsWith("http")
+              ? post.data.thumbnail
+              : false),
           /*WE NEED THIS DATA IF WE WANNA REQUEST THE POST'S DATA (comments)*/
           subReddit: post.data.subreddit,
           postId: post.data.id,

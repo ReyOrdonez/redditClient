@@ -73,6 +73,9 @@
 .display-none {
   display: none;
 }
+.post-text {
+  margin: 0px 20px 20px 20px;
+}
 
 /*--------MEDIA QUERIS--------*/
 @media (max-width: 915px) {
@@ -101,5 +104,8 @@
   }
   .button-text.reactions-number {
     margin: 0px 2px;
+  }
+  .comments-section {
+    padding-left: 10px;
   }
 }
